@@ -1,0 +1,1480 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DOT
+    TYPE
+
+Grammar
+
+Rule 0     S' -> calc
+Rule 1     calc -> EXPRESSION
+Rule 2     calc -> VAR_ASSIGN
+Rule 3     calc -> CONDITION
+Rule 4     calc -> WRITE
+Rule 5     calc -> PROGRA
+Rule 6     calc -> VARS
+Rule 7     calc -> epsilon
+Rule 8     epsilon -> <empty>
+Rule 9     FACTOR -> INT
+Rule 10    FACTOR -> FLOAT
+Rule 11    FACTOR -> STRING
+Rule 12    FACTOR -> ID
+Rule 13    EXP -> EXP PLUS EXP
+Rule 14    EXP -> EXP MINUS EXP
+Rule 15    EXP -> EXP MULT EXP
+Rule 16    EXP -> EXP DIV EXP
+Rule 17    EXP -> FACTOR
+Rule 18    EXP -> LPAR EXPRESSION RPAR
+Rule 19    EXP -> MINUS EXP
+Rule 20    EXPRESSION -> EXP
+Rule 21    EXPRESSION -> EXPRESSION_REL
+Rule 22    EXPRESSION_REL -> EXP GT EXP
+Rule 23    EXPRESSION_REL -> EXP LT EXP
+Rule 24    EXPRESSION_REL -> EXP DT EXP
+Rule 25    VAR_ASSIGN -> ID ASSIGN EXPRESSION SEMICOLON
+Rule 26    VAR_ASSIGN -> ID ASSIGN ID SEMICOLON
+Rule 27    CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK
+Rule 28    CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK
+Rule 29    BLOCK -> LBRACE BLOCK_ALT RBRACE
+Rule 30    BLOCK_ALT -> STATEMENT BLOCK_ALT
+Rule 31    BLOCK_ALT -> epsilon
+Rule 32    STATEMENT -> VAR_ASSIGN
+Rule 33    STATEMENT -> CONDITION
+Rule 34    STATEMENT -> WRITE
+Rule 35    WRITE -> PRINT LPAR WRITE_ALT RPAR SEMICOLON
+Rule 36    WRITE_ALT -> EXPRESSION
+Rule 37    WRITE_ALT -> EXPRESSION COMMA WRITE_ALT
+Rule 38    PROGRA -> PROGRAM ID SEMICOLON STATEMENT BLOCK
+Rule 39    PROGRA -> PROGRAM ID SEMICOLON VARS BLOCK
+Rule 40    VARS -> VAR VARS_ALT
+Rule 41    VARS_ALT -> ID IDLIST COLON T_INT VARLIST SEMICOLON
+Rule 42    VARS_ALT -> ID IDLIST COLON T_FLOAT VARLIST SEMICOLON
+Rule 43    IDLIST -> COMMA ID IDLIST
+Rule 44    IDLIST -> epsilon
+Rule 45    VARLIST -> VARS_ALT
+Rule 46    VARLIST -> epsilon
+
+Terminals, with rules where they appear
+
+ASSIGN               : 25 26
+COLON                : 41 42
+COMMA                : 37 43
+DIV                  : 16
+DOT                  : 
+DT                   : 24
+ELSE                 : 28
+FLOAT                : 10
+GT                   : 22
+ID                   : 12 25 26 26 38 39 41 42 43
+IF                   : 27 28
+INT                  : 9
+LBRACE               : 29
+LPAR                 : 18 27 28 35
+LT                   : 23
+MINUS                : 14 19
+MULT                 : 15
+PLUS                 : 13
+PRINT                : 35
+PROGRAM              : 38 39
+RBRACE               : 29
+RPAR                 : 18 27 28 35
+SEMICOLON            : 25 26 35 38 39 41 42
+STRING               : 11
+TYPE                 : 
+T_FLOAT              : 42
+T_INT                : 41
+VAR                  : 40
+error                : 
+
+Nonterminals, with rules where they appear
+
+BLOCK                : 27 28 28 38 39
+BLOCK_ALT            : 29 30
+CONDITION            : 3 33
+EXP                  : 13 13 14 14 15 15 16 16 19 20 22 22 23 23 24 24
+EXPRESSION           : 1 18 25 36 37
+EXPRESSION_REL       : 21 27 28
+FACTOR               : 17
+IDLIST               : 41 42 43
+PROGRA               : 5
+STATEMENT            : 30 38
+VARLIST              : 41 42
+VARS                 : 6 39
+VARS_ALT             : 40 45
+VAR_ASSIGN           : 2 32
+WRITE                : 4 34
+WRITE_ALT            : 35 37
+calc                 : 0
+epsilon              : 7 31 44 46
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . calc
+    (1) calc -> . EXPRESSION
+    (2) calc -> . VAR_ASSIGN
+    (3) calc -> . CONDITION
+    (4) calc -> . WRITE
+    (5) calc -> . PROGRA
+    (6) calc -> . VARS
+    (7) calc -> . epsilon
+    (20) EXPRESSION -> . EXP
+    (21) EXPRESSION -> . EXPRESSION_REL
+    (25) VAR_ASSIGN -> . ID ASSIGN EXPRESSION SEMICOLON
+    (26) VAR_ASSIGN -> . ID ASSIGN ID SEMICOLON
+    (27) CONDITION -> . IF LPAR EXPRESSION_REL RPAR BLOCK
+    (28) CONDITION -> . IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK
+    (35) WRITE -> . PRINT LPAR WRITE_ALT RPAR SEMICOLON
+    (38) PROGRA -> . PROGRAM ID SEMICOLON STATEMENT BLOCK
+    (39) PROGRA -> . PROGRAM ID SEMICOLON VARS BLOCK
+    (40) VARS -> . VAR VARS_ALT
+    (8) epsilon -> .
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (22) EXPRESSION_REL -> . EXP GT EXP
+    (23) EXPRESSION_REL -> . EXP LT EXP
+    (24) EXPRESSION_REL -> . EXP DT EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    ID              shift and go to state 11
+    IF              shift and go to state 12
+    PRINT           shift and go to state 14
+    PROGRAM         shift and go to state 15
+    VAR             shift and go to state 16
+    $end            reduce using rule 8 (epsilon -> .)
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+
+    calc                           shift and go to state 1
+    EXPRESSION                     shift and go to state 2
+    VAR_ASSIGN                     shift and go to state 3
+    CONDITION                      shift and go to state 4
+    WRITE                          shift and go to state 5
+    PROGRA                         shift and go to state 6
+    VARS                           shift and go to state 7
+    epsilon                        shift and go to state 8
+    EXP                            shift and go to state 9
+    EXPRESSION_REL                 shift and go to state 10
+    FACTOR                         shift and go to state 18
+
+state 1
+
+    (0) S' -> calc .
+
+
+
+state 2
+
+    (1) calc -> EXPRESSION .
+
+    $end            reduce using rule 1 (calc -> EXPRESSION .)
+
+
+state 3
+
+    (2) calc -> VAR_ASSIGN .
+
+    $end            reduce using rule 2 (calc -> VAR_ASSIGN .)
+
+
+state 4
+
+    (3) calc -> CONDITION .
+
+    $end            reduce using rule 3 (calc -> CONDITION .)
+
+
+state 5
+
+    (4) calc -> WRITE .
+
+    $end            reduce using rule 4 (calc -> WRITE .)
+
+
+state 6
+
+    (5) calc -> PROGRA .
+
+    $end            reduce using rule 5 (calc -> PROGRA .)
+
+
+state 7
+
+    (6) calc -> VARS .
+
+    $end            reduce using rule 6 (calc -> VARS .)
+
+
+state 8
+
+    (7) calc -> epsilon .
+
+    $end            reduce using rule 7 (calc -> epsilon .)
+
+
+state 9
+
+    (20) EXPRESSION -> EXP .
+    (13) EXP -> EXP . PLUS EXP
+    (14) EXP -> EXP . MINUS EXP
+    (15) EXP -> EXP . MULT EXP
+    (16) EXP -> EXP . DIV EXP
+    (22) EXPRESSION_REL -> EXP . GT EXP
+    (23) EXPRESSION_REL -> EXP . LT EXP
+    (24) EXPRESSION_REL -> EXP . DT EXP
+
+    $end            reduce using rule 20 (EXPRESSION -> EXP .)
+    RPAR            reduce using rule 20 (EXPRESSION -> EXP .)
+    SEMICOLON       reduce using rule 20 (EXPRESSION -> EXP .)
+    COMMA           reduce using rule 20 (EXPRESSION -> EXP .)
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+    MULT            shift and go to state 24
+    DIV             shift and go to state 25
+    GT              shift and go to state 26
+    LT              shift and go to state 27
+    DT              shift and go to state 28
+
+
+state 10
+
+    (21) EXPRESSION -> EXPRESSION_REL .
+
+    $end            reduce using rule 21 (EXPRESSION -> EXPRESSION_REL .)
+    RPAR            reduce using rule 21 (EXPRESSION -> EXPRESSION_REL .)
+    SEMICOLON       reduce using rule 21 (EXPRESSION -> EXPRESSION_REL .)
+    COMMA           reduce using rule 21 (EXPRESSION -> EXPRESSION_REL .)
+
+
+state 11
+
+    (25) VAR_ASSIGN -> ID . ASSIGN EXPRESSION SEMICOLON
+    (26) VAR_ASSIGN -> ID . ASSIGN ID SEMICOLON
+    (12) FACTOR -> ID .
+
+    ASSIGN          shift and go to state 29
+    PLUS            reduce using rule 12 (FACTOR -> ID .)
+    MINUS           reduce using rule 12 (FACTOR -> ID .)
+    MULT            reduce using rule 12 (FACTOR -> ID .)
+    DIV             reduce using rule 12 (FACTOR -> ID .)
+    GT              reduce using rule 12 (FACTOR -> ID .)
+    LT              reduce using rule 12 (FACTOR -> ID .)
+    DT              reduce using rule 12 (FACTOR -> ID .)
+    $end            reduce using rule 12 (FACTOR -> ID .)
+
+
+state 12
+
+    (27) CONDITION -> IF . LPAR EXPRESSION_REL RPAR BLOCK
+    (28) CONDITION -> IF . LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK
+
+    LPAR            shift and go to state 30
+
+
+state 13
+
+    (18) EXP -> LPAR . EXPRESSION RPAR
+    (20) EXPRESSION -> . EXP
+    (21) EXPRESSION -> . EXPRESSION_REL
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (22) EXPRESSION_REL -> . EXP GT EXP
+    (23) EXPRESSION_REL -> . EXP LT EXP
+    (24) EXPRESSION_REL -> . EXP DT EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXPRESSION                     shift and go to state 31
+    EXP                            shift and go to state 9
+    EXPRESSION_REL                 shift and go to state 10
+    FACTOR                         shift and go to state 18
+
+state 14
+
+    (35) WRITE -> PRINT . LPAR WRITE_ALT RPAR SEMICOLON
+
+    LPAR            shift and go to state 33
+
+
+state 15
+
+    (38) PROGRA -> PROGRAM . ID SEMICOLON STATEMENT BLOCK
+    (39) PROGRA -> PROGRAM . ID SEMICOLON VARS BLOCK
+
+    ID              shift and go to state 34
+
+
+state 16
+
+    (40) VARS -> VAR . VARS_ALT
+    (41) VARS_ALT -> . ID IDLIST COLON T_INT VARLIST SEMICOLON
+    (42) VARS_ALT -> . ID IDLIST COLON T_FLOAT VARLIST SEMICOLON
+
+    ID              shift and go to state 36
+
+    VARS_ALT                       shift and go to state 35
+
+state 17
+
+    (19) EXP -> MINUS . EXP
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXP                            shift and go to state 37
+    FACTOR                         shift and go to state 18
+
+state 18
+
+    (17) EXP -> FACTOR .
+
+    PLUS            reduce using rule 17 (EXP -> FACTOR .)
+    MINUS           reduce using rule 17 (EXP -> FACTOR .)
+    MULT            reduce using rule 17 (EXP -> FACTOR .)
+    DIV             reduce using rule 17 (EXP -> FACTOR .)
+    GT              reduce using rule 17 (EXP -> FACTOR .)
+    LT              reduce using rule 17 (EXP -> FACTOR .)
+    DT              reduce using rule 17 (EXP -> FACTOR .)
+    $end            reduce using rule 17 (EXP -> FACTOR .)
+    RPAR            reduce using rule 17 (EXP -> FACTOR .)
+    SEMICOLON       reduce using rule 17 (EXP -> FACTOR .)
+    COMMA           reduce using rule 17 (EXP -> FACTOR .)
+
+
+state 19
+
+    (9) FACTOR -> INT .
+
+    PLUS            reduce using rule 9 (FACTOR -> INT .)
+    MINUS           reduce using rule 9 (FACTOR -> INT .)
+    MULT            reduce using rule 9 (FACTOR -> INT .)
+    DIV             reduce using rule 9 (FACTOR -> INT .)
+    GT              reduce using rule 9 (FACTOR -> INT .)
+    LT              reduce using rule 9 (FACTOR -> INT .)
+    DT              reduce using rule 9 (FACTOR -> INT .)
+    $end            reduce using rule 9 (FACTOR -> INT .)
+    RPAR            reduce using rule 9 (FACTOR -> INT .)
+    SEMICOLON       reduce using rule 9 (FACTOR -> INT .)
+    COMMA           reduce using rule 9 (FACTOR -> INT .)
+
+
+state 20
+
+    (10) FACTOR -> FLOAT .
+
+    PLUS            reduce using rule 10 (FACTOR -> FLOAT .)
+    MINUS           reduce using rule 10 (FACTOR -> FLOAT .)
+    MULT            reduce using rule 10 (FACTOR -> FLOAT .)
+    DIV             reduce using rule 10 (FACTOR -> FLOAT .)
+    GT              reduce using rule 10 (FACTOR -> FLOAT .)
+    LT              reduce using rule 10 (FACTOR -> FLOAT .)
+    DT              reduce using rule 10 (FACTOR -> FLOAT .)
+    $end            reduce using rule 10 (FACTOR -> FLOAT .)
+    RPAR            reduce using rule 10 (FACTOR -> FLOAT .)
+    SEMICOLON       reduce using rule 10 (FACTOR -> FLOAT .)
+    COMMA           reduce using rule 10 (FACTOR -> FLOAT .)
+
+
+state 21
+
+    (11) FACTOR -> STRING .
+
+    PLUS            reduce using rule 11 (FACTOR -> STRING .)
+    MINUS           reduce using rule 11 (FACTOR -> STRING .)
+    MULT            reduce using rule 11 (FACTOR -> STRING .)
+    DIV             reduce using rule 11 (FACTOR -> STRING .)
+    GT              reduce using rule 11 (FACTOR -> STRING .)
+    LT              reduce using rule 11 (FACTOR -> STRING .)
+    DT              reduce using rule 11 (FACTOR -> STRING .)
+    $end            reduce using rule 11 (FACTOR -> STRING .)
+    RPAR            reduce using rule 11 (FACTOR -> STRING .)
+    SEMICOLON       reduce using rule 11 (FACTOR -> STRING .)
+    COMMA           reduce using rule 11 (FACTOR -> STRING .)
+
+
+state 22
+
+    (13) EXP -> EXP PLUS . EXP
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXP                            shift and go to state 38
+    FACTOR                         shift and go to state 18
+
+state 23
+
+    (14) EXP -> EXP MINUS . EXP
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXP                            shift and go to state 39
+    FACTOR                         shift and go to state 18
+
+state 24
+
+    (15) EXP -> EXP MULT . EXP
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXP                            shift and go to state 40
+    FACTOR                         shift and go to state 18
+
+state 25
+
+    (16) EXP -> EXP DIV . EXP
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXP                            shift and go to state 41
+    FACTOR                         shift and go to state 18
+
+state 26
+
+    (22) EXPRESSION_REL -> EXP GT . EXP
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXP                            shift and go to state 42
+    FACTOR                         shift and go to state 18
+
+state 27
+
+    (23) EXPRESSION_REL -> EXP LT . EXP
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXP                            shift and go to state 43
+    FACTOR                         shift and go to state 18
+
+state 28
+
+    (24) EXPRESSION_REL -> EXP DT . EXP
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXP                            shift and go to state 44
+    FACTOR                         shift and go to state 18
+
+state 29
+
+    (25) VAR_ASSIGN -> ID ASSIGN . EXPRESSION SEMICOLON
+    (26) VAR_ASSIGN -> ID ASSIGN . ID SEMICOLON
+    (20) EXPRESSION -> . EXP
+    (21) EXPRESSION -> . EXPRESSION_REL
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (22) EXPRESSION_REL -> . EXP GT EXP
+    (23) EXPRESSION_REL -> . EXP LT EXP
+    (24) EXPRESSION_REL -> . EXP DT EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    ID              shift and go to state 45
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+
+    EXPRESSION                     shift and go to state 46
+    EXP                            shift and go to state 9
+    EXPRESSION_REL                 shift and go to state 10
+    FACTOR                         shift and go to state 18
+
+state 30
+
+    (27) CONDITION -> IF LPAR . EXPRESSION_REL RPAR BLOCK
+    (28) CONDITION -> IF LPAR . EXPRESSION_REL RPAR BLOCK ELSE BLOCK
+    (22) EXPRESSION_REL -> . EXP GT EXP
+    (23) EXPRESSION_REL -> . EXP LT EXP
+    (24) EXPRESSION_REL -> . EXP DT EXP
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXPRESSION_REL                 shift and go to state 47
+    EXP                            shift and go to state 48
+    FACTOR                         shift and go to state 18
+
+state 31
+
+    (18) EXP -> LPAR EXPRESSION . RPAR
+
+    RPAR            shift and go to state 49
+
+
+state 32
+
+    (12) FACTOR -> ID .
+
+    PLUS            reduce using rule 12 (FACTOR -> ID .)
+    MINUS           reduce using rule 12 (FACTOR -> ID .)
+    MULT            reduce using rule 12 (FACTOR -> ID .)
+    DIV             reduce using rule 12 (FACTOR -> ID .)
+    GT              reduce using rule 12 (FACTOR -> ID .)
+    LT              reduce using rule 12 (FACTOR -> ID .)
+    DT              reduce using rule 12 (FACTOR -> ID .)
+    RPAR            reduce using rule 12 (FACTOR -> ID .)
+    $end            reduce using rule 12 (FACTOR -> ID .)
+    SEMICOLON       reduce using rule 12 (FACTOR -> ID .)
+    COMMA           reduce using rule 12 (FACTOR -> ID .)
+
+
+state 33
+
+    (35) WRITE -> PRINT LPAR . WRITE_ALT RPAR SEMICOLON
+    (36) WRITE_ALT -> . EXPRESSION
+    (37) WRITE_ALT -> . EXPRESSION COMMA WRITE_ALT
+    (20) EXPRESSION -> . EXP
+    (21) EXPRESSION -> . EXPRESSION_REL
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (22) EXPRESSION_REL -> . EXP GT EXP
+    (23) EXPRESSION_REL -> . EXP LT EXP
+    (24) EXPRESSION_REL -> . EXP DT EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    WRITE_ALT                      shift and go to state 50
+    EXPRESSION                     shift and go to state 51
+    EXP                            shift and go to state 9
+    EXPRESSION_REL                 shift and go to state 10
+    FACTOR                         shift and go to state 18
+
+state 34
+
+    (38) PROGRA -> PROGRAM ID . SEMICOLON STATEMENT BLOCK
+    (39) PROGRA -> PROGRAM ID . SEMICOLON VARS BLOCK
+
+    SEMICOLON       shift and go to state 52
+
+
+state 35
+
+    (40) VARS -> VAR VARS_ALT .
+
+    $end            reduce using rule 40 (VARS -> VAR VARS_ALT .)
+    LBRACE          reduce using rule 40 (VARS -> VAR VARS_ALT .)
+
+
+state 36
+
+    (41) VARS_ALT -> ID . IDLIST COLON T_INT VARLIST SEMICOLON
+    (42) VARS_ALT -> ID . IDLIST COLON T_FLOAT VARLIST SEMICOLON
+    (43) IDLIST -> . COMMA ID IDLIST
+    (44) IDLIST -> . epsilon
+    (8) epsilon -> .
+
+    COMMA           shift and go to state 54
+    COLON           reduce using rule 8 (epsilon -> .)
+
+    IDLIST                         shift and go to state 53
+    epsilon                        shift and go to state 55
+
+state 37
+
+    (19) EXP -> MINUS EXP .
+    (13) EXP -> EXP . PLUS EXP
+    (14) EXP -> EXP . MINUS EXP
+    (15) EXP -> EXP . MULT EXP
+    (16) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 19 (EXP -> MINUS EXP .)
+    MINUS           reduce using rule 19 (EXP -> MINUS EXP .)
+    MULT            reduce using rule 19 (EXP -> MINUS EXP .)
+    DIV             reduce using rule 19 (EXP -> MINUS EXP .)
+    GT              reduce using rule 19 (EXP -> MINUS EXP .)
+    LT              reduce using rule 19 (EXP -> MINUS EXP .)
+    DT              reduce using rule 19 (EXP -> MINUS EXP .)
+    $end            reduce using rule 19 (EXP -> MINUS EXP .)
+    RPAR            reduce using rule 19 (EXP -> MINUS EXP .)
+    SEMICOLON       reduce using rule 19 (EXP -> MINUS EXP .)
+    COMMA           reduce using rule 19 (EXP -> MINUS EXP .)
+
+  ! PLUS            [ shift and go to state 22 ]
+  ! MINUS           [ shift and go to state 23 ]
+  ! MULT            [ shift and go to state 24 ]
+  ! DIV             [ shift and go to state 25 ]
+
+
+state 38
+
+    (13) EXP -> EXP PLUS EXP .
+    (13) EXP -> EXP . PLUS EXP
+    (14) EXP -> EXP . MINUS EXP
+    (15) EXP -> EXP . MULT EXP
+    (16) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 13 (EXP -> EXP PLUS EXP .)
+    MINUS           reduce using rule 13 (EXP -> EXP PLUS EXP .)
+    GT              reduce using rule 13 (EXP -> EXP PLUS EXP .)
+    LT              reduce using rule 13 (EXP -> EXP PLUS EXP .)
+    DT              reduce using rule 13 (EXP -> EXP PLUS EXP .)
+    $end            reduce using rule 13 (EXP -> EXP PLUS EXP .)
+    RPAR            reduce using rule 13 (EXP -> EXP PLUS EXP .)
+    SEMICOLON       reduce using rule 13 (EXP -> EXP PLUS EXP .)
+    COMMA           reduce using rule 13 (EXP -> EXP PLUS EXP .)
+    MULT            shift and go to state 24
+    DIV             shift and go to state 25
+
+  ! MULT            [ reduce using rule 13 (EXP -> EXP PLUS EXP .) ]
+  ! DIV             [ reduce using rule 13 (EXP -> EXP PLUS EXP .) ]
+  ! PLUS            [ shift and go to state 22 ]
+  ! MINUS           [ shift and go to state 23 ]
+
+
+state 39
+
+    (14) EXP -> EXP MINUS EXP .
+    (13) EXP -> EXP . PLUS EXP
+    (14) EXP -> EXP . MINUS EXP
+    (15) EXP -> EXP . MULT EXP
+    (16) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 14 (EXP -> EXP MINUS EXP .)
+    MINUS           reduce using rule 14 (EXP -> EXP MINUS EXP .)
+    GT              reduce using rule 14 (EXP -> EXP MINUS EXP .)
+    LT              reduce using rule 14 (EXP -> EXP MINUS EXP .)
+    DT              reduce using rule 14 (EXP -> EXP MINUS EXP .)
+    $end            reduce using rule 14 (EXP -> EXP MINUS EXP .)
+    RPAR            reduce using rule 14 (EXP -> EXP MINUS EXP .)
+    SEMICOLON       reduce using rule 14 (EXP -> EXP MINUS EXP .)
+    COMMA           reduce using rule 14 (EXP -> EXP MINUS EXP .)
+    MULT            shift and go to state 24
+    DIV             shift and go to state 25
+
+  ! MULT            [ reduce using rule 14 (EXP -> EXP MINUS EXP .) ]
+  ! DIV             [ reduce using rule 14 (EXP -> EXP MINUS EXP .) ]
+  ! PLUS            [ shift and go to state 22 ]
+  ! MINUS           [ shift and go to state 23 ]
+
+
+state 40
+
+    (15) EXP -> EXP MULT EXP .
+    (13) EXP -> EXP . PLUS EXP
+    (14) EXP -> EXP . MINUS EXP
+    (15) EXP -> EXP . MULT EXP
+    (16) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 15 (EXP -> EXP MULT EXP .)
+    MINUS           reduce using rule 15 (EXP -> EXP MULT EXP .)
+    MULT            reduce using rule 15 (EXP -> EXP MULT EXP .)
+    DIV             reduce using rule 15 (EXP -> EXP MULT EXP .)
+    GT              reduce using rule 15 (EXP -> EXP MULT EXP .)
+    LT              reduce using rule 15 (EXP -> EXP MULT EXP .)
+    DT              reduce using rule 15 (EXP -> EXP MULT EXP .)
+    $end            reduce using rule 15 (EXP -> EXP MULT EXP .)
+    RPAR            reduce using rule 15 (EXP -> EXP MULT EXP .)
+    SEMICOLON       reduce using rule 15 (EXP -> EXP MULT EXP .)
+    COMMA           reduce using rule 15 (EXP -> EXP MULT EXP .)
+
+  ! PLUS            [ shift and go to state 22 ]
+  ! MINUS           [ shift and go to state 23 ]
+  ! MULT            [ shift and go to state 24 ]
+  ! DIV             [ shift and go to state 25 ]
+
+
+state 41
+
+    (16) EXP -> EXP DIV EXP .
+    (13) EXP -> EXP . PLUS EXP
+    (14) EXP -> EXP . MINUS EXP
+    (15) EXP -> EXP . MULT EXP
+    (16) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 16 (EXP -> EXP DIV EXP .)
+    MINUS           reduce using rule 16 (EXP -> EXP DIV EXP .)
+    MULT            reduce using rule 16 (EXP -> EXP DIV EXP .)
+    DIV             reduce using rule 16 (EXP -> EXP DIV EXP .)
+    GT              reduce using rule 16 (EXP -> EXP DIV EXP .)
+    LT              reduce using rule 16 (EXP -> EXP DIV EXP .)
+    DT              reduce using rule 16 (EXP -> EXP DIV EXP .)
+    $end            reduce using rule 16 (EXP -> EXP DIV EXP .)
+    RPAR            reduce using rule 16 (EXP -> EXP DIV EXP .)
+    SEMICOLON       reduce using rule 16 (EXP -> EXP DIV EXP .)
+    COMMA           reduce using rule 16 (EXP -> EXP DIV EXP .)
+
+  ! PLUS            [ shift and go to state 22 ]
+  ! MINUS           [ shift and go to state 23 ]
+  ! MULT            [ shift and go to state 24 ]
+  ! DIV             [ shift and go to state 25 ]
+
+
+state 42
+
+    (22) EXPRESSION_REL -> EXP GT EXP .
+    (13) EXP -> EXP . PLUS EXP
+    (14) EXP -> EXP . MINUS EXP
+    (15) EXP -> EXP . MULT EXP
+    (16) EXP -> EXP . DIV EXP
+
+    $end            reduce using rule 22 (EXPRESSION_REL -> EXP GT EXP .)
+    RPAR            reduce using rule 22 (EXPRESSION_REL -> EXP GT EXP .)
+    SEMICOLON       reduce using rule 22 (EXPRESSION_REL -> EXP GT EXP .)
+    COMMA           reduce using rule 22 (EXPRESSION_REL -> EXP GT EXP .)
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+    MULT            shift and go to state 24
+    DIV             shift and go to state 25
+
+
+state 43
+
+    (23) EXPRESSION_REL -> EXP LT EXP .
+    (13) EXP -> EXP . PLUS EXP
+    (14) EXP -> EXP . MINUS EXP
+    (15) EXP -> EXP . MULT EXP
+    (16) EXP -> EXP . DIV EXP
+
+    $end            reduce using rule 23 (EXPRESSION_REL -> EXP LT EXP .)
+    RPAR            reduce using rule 23 (EXPRESSION_REL -> EXP LT EXP .)
+    SEMICOLON       reduce using rule 23 (EXPRESSION_REL -> EXP LT EXP .)
+    COMMA           reduce using rule 23 (EXPRESSION_REL -> EXP LT EXP .)
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+    MULT            shift and go to state 24
+    DIV             shift and go to state 25
+
+
+state 44
+
+    (24) EXPRESSION_REL -> EXP DT EXP .
+    (13) EXP -> EXP . PLUS EXP
+    (14) EXP -> EXP . MINUS EXP
+    (15) EXP -> EXP . MULT EXP
+    (16) EXP -> EXP . DIV EXP
+
+    $end            reduce using rule 24 (EXPRESSION_REL -> EXP DT EXP .)
+    RPAR            reduce using rule 24 (EXPRESSION_REL -> EXP DT EXP .)
+    SEMICOLON       reduce using rule 24 (EXPRESSION_REL -> EXP DT EXP .)
+    COMMA           reduce using rule 24 (EXPRESSION_REL -> EXP DT EXP .)
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+    MULT            shift and go to state 24
+    DIV             shift and go to state 25
+
+
+state 45
+
+    (26) VAR_ASSIGN -> ID ASSIGN ID . SEMICOLON
+    (12) FACTOR -> ID .
+
+  ! shift/reduce conflict for SEMICOLON resolved as shift
+    SEMICOLON       shift and go to state 56
+    PLUS            reduce using rule 12 (FACTOR -> ID .)
+    MINUS           reduce using rule 12 (FACTOR -> ID .)
+    MULT            reduce using rule 12 (FACTOR -> ID .)
+    DIV             reduce using rule 12 (FACTOR -> ID .)
+    GT              reduce using rule 12 (FACTOR -> ID .)
+    LT              reduce using rule 12 (FACTOR -> ID .)
+    DT              reduce using rule 12 (FACTOR -> ID .)
+
+  ! SEMICOLON       [ reduce using rule 12 (FACTOR -> ID .) ]
+
+
+state 46
+
+    (25) VAR_ASSIGN -> ID ASSIGN EXPRESSION . SEMICOLON
+
+    SEMICOLON       shift and go to state 57
+
+
+state 47
+
+    (27) CONDITION -> IF LPAR EXPRESSION_REL . RPAR BLOCK
+    (28) CONDITION -> IF LPAR EXPRESSION_REL . RPAR BLOCK ELSE BLOCK
+
+    RPAR            shift and go to state 58
+
+
+state 48
+
+    (22) EXPRESSION_REL -> EXP . GT EXP
+    (23) EXPRESSION_REL -> EXP . LT EXP
+    (24) EXPRESSION_REL -> EXP . DT EXP
+    (13) EXP -> EXP . PLUS EXP
+    (14) EXP -> EXP . MINUS EXP
+    (15) EXP -> EXP . MULT EXP
+    (16) EXP -> EXP . DIV EXP
+
+    GT              shift and go to state 26
+    LT              shift and go to state 27
+    DT              shift and go to state 28
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+    MULT            shift and go to state 24
+    DIV             shift and go to state 25
+
+
+state 49
+
+    (18) EXP -> LPAR EXPRESSION RPAR .
+
+    PLUS            reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+    MINUS           reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+    MULT            reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+    DIV             reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+    GT              reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+    LT              reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+    DT              reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+    $end            reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+    RPAR            reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+    SEMICOLON       reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+    COMMA           reduce using rule 18 (EXP -> LPAR EXPRESSION RPAR .)
+
+
+state 50
+
+    (35) WRITE -> PRINT LPAR WRITE_ALT . RPAR SEMICOLON
+
+    RPAR            shift and go to state 59
+
+
+state 51
+
+    (36) WRITE_ALT -> EXPRESSION .
+    (37) WRITE_ALT -> EXPRESSION . COMMA WRITE_ALT
+
+    RPAR            reduce using rule 36 (WRITE_ALT -> EXPRESSION .)
+    COMMA           shift and go to state 60
+
+
+state 52
+
+    (38) PROGRA -> PROGRAM ID SEMICOLON . STATEMENT BLOCK
+    (39) PROGRA -> PROGRAM ID SEMICOLON . VARS BLOCK
+    (32) STATEMENT -> . VAR_ASSIGN
+    (33) STATEMENT -> . CONDITION
+    (34) STATEMENT -> . WRITE
+    (40) VARS -> . VAR VARS_ALT
+    (25) VAR_ASSIGN -> . ID ASSIGN EXPRESSION SEMICOLON
+    (26) VAR_ASSIGN -> . ID ASSIGN ID SEMICOLON
+    (27) CONDITION -> . IF LPAR EXPRESSION_REL RPAR BLOCK
+    (28) CONDITION -> . IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK
+    (35) WRITE -> . PRINT LPAR WRITE_ALT RPAR SEMICOLON
+
+    VAR             shift and go to state 16
+    ID              shift and go to state 61
+    IF              shift and go to state 12
+    PRINT           shift and go to state 14
+
+    STATEMENT                      shift and go to state 62
+    VARS                           shift and go to state 63
+    VAR_ASSIGN                     shift and go to state 64
+    CONDITION                      shift and go to state 65
+    WRITE                          shift and go to state 66
+
+state 53
+
+    (41) VARS_ALT -> ID IDLIST . COLON T_INT VARLIST SEMICOLON
+    (42) VARS_ALT -> ID IDLIST . COLON T_FLOAT VARLIST SEMICOLON
+
+    COLON           shift and go to state 67
+
+
+state 54
+
+    (43) IDLIST -> COMMA . ID IDLIST
+
+    ID              shift and go to state 68
+
+
+state 55
+
+    (44) IDLIST -> epsilon .
+
+    COLON           reduce using rule 44 (IDLIST -> epsilon .)
+
+
+state 56
+
+    (26) VAR_ASSIGN -> ID ASSIGN ID SEMICOLON .
+
+    $end            reduce using rule 26 (VAR_ASSIGN -> ID ASSIGN ID SEMICOLON .)
+    LBRACE          reduce using rule 26 (VAR_ASSIGN -> ID ASSIGN ID SEMICOLON .)
+    ID              reduce using rule 26 (VAR_ASSIGN -> ID ASSIGN ID SEMICOLON .)
+    IF              reduce using rule 26 (VAR_ASSIGN -> ID ASSIGN ID SEMICOLON .)
+    PRINT           reduce using rule 26 (VAR_ASSIGN -> ID ASSIGN ID SEMICOLON .)
+    RBRACE          reduce using rule 26 (VAR_ASSIGN -> ID ASSIGN ID SEMICOLON .)
+
+
+state 57
+
+    (25) VAR_ASSIGN -> ID ASSIGN EXPRESSION SEMICOLON .
+
+    $end            reduce using rule 25 (VAR_ASSIGN -> ID ASSIGN EXPRESSION SEMICOLON .)
+    LBRACE          reduce using rule 25 (VAR_ASSIGN -> ID ASSIGN EXPRESSION SEMICOLON .)
+    ID              reduce using rule 25 (VAR_ASSIGN -> ID ASSIGN EXPRESSION SEMICOLON .)
+    IF              reduce using rule 25 (VAR_ASSIGN -> ID ASSIGN EXPRESSION SEMICOLON .)
+    PRINT           reduce using rule 25 (VAR_ASSIGN -> ID ASSIGN EXPRESSION SEMICOLON .)
+    RBRACE          reduce using rule 25 (VAR_ASSIGN -> ID ASSIGN EXPRESSION SEMICOLON .)
+
+
+state 58
+
+    (27) CONDITION -> IF LPAR EXPRESSION_REL RPAR . BLOCK
+    (28) CONDITION -> IF LPAR EXPRESSION_REL RPAR . BLOCK ELSE BLOCK
+    (29) BLOCK -> . LBRACE BLOCK_ALT RBRACE
+
+    LBRACE          shift and go to state 70
+
+    BLOCK                          shift and go to state 69
+
+state 59
+
+    (35) WRITE -> PRINT LPAR WRITE_ALT RPAR . SEMICOLON
+
+    SEMICOLON       shift and go to state 71
+
+
+state 60
+
+    (37) WRITE_ALT -> EXPRESSION COMMA . WRITE_ALT
+    (36) WRITE_ALT -> . EXPRESSION
+    (37) WRITE_ALT -> . EXPRESSION COMMA WRITE_ALT
+    (20) EXPRESSION -> . EXP
+    (21) EXPRESSION -> . EXPRESSION_REL
+    (13) EXP -> . EXP PLUS EXP
+    (14) EXP -> . EXP MINUS EXP
+    (15) EXP -> . EXP MULT EXP
+    (16) EXP -> . EXP DIV EXP
+    (17) EXP -> . FACTOR
+    (18) EXP -> . LPAR EXPRESSION RPAR
+    (19) EXP -> . MINUS EXP
+    (22) EXPRESSION_REL -> . EXP GT EXP
+    (23) EXPRESSION_REL -> . EXP LT EXP
+    (24) EXPRESSION_REL -> . EXP DT EXP
+    (9) FACTOR -> . INT
+    (10) FACTOR -> . FLOAT
+    (11) FACTOR -> . STRING
+    (12) FACTOR -> . ID
+
+    LPAR            shift and go to state 13
+    MINUS           shift and go to state 17
+    INT             shift and go to state 19
+    FLOAT           shift and go to state 20
+    STRING          shift and go to state 21
+    ID              shift and go to state 32
+
+    EXPRESSION                     shift and go to state 51
+    WRITE_ALT                      shift and go to state 72
+    EXP                            shift and go to state 9
+    EXPRESSION_REL                 shift and go to state 10
+    FACTOR                         shift and go to state 18
+
+state 61
+
+    (25) VAR_ASSIGN -> ID . ASSIGN EXPRESSION SEMICOLON
+    (26) VAR_ASSIGN -> ID . ASSIGN ID SEMICOLON
+
+    ASSIGN          shift and go to state 29
+
+
+state 62
+
+    (38) PROGRA -> PROGRAM ID SEMICOLON STATEMENT . BLOCK
+    (29) BLOCK -> . LBRACE BLOCK_ALT RBRACE
+
+    LBRACE          shift and go to state 70
+
+    BLOCK                          shift and go to state 73
+
+state 63
+
+    (39) PROGRA -> PROGRAM ID SEMICOLON VARS . BLOCK
+    (29) BLOCK -> . LBRACE BLOCK_ALT RBRACE
+
+    LBRACE          shift and go to state 70
+
+    BLOCK                          shift and go to state 74
+
+state 64
+
+    (32) STATEMENT -> VAR_ASSIGN .
+
+    LBRACE          reduce using rule 32 (STATEMENT -> VAR_ASSIGN .)
+    ID              reduce using rule 32 (STATEMENT -> VAR_ASSIGN .)
+    IF              reduce using rule 32 (STATEMENT -> VAR_ASSIGN .)
+    PRINT           reduce using rule 32 (STATEMENT -> VAR_ASSIGN .)
+    RBRACE          reduce using rule 32 (STATEMENT -> VAR_ASSIGN .)
+
+
+state 65
+
+    (33) STATEMENT -> CONDITION .
+
+    LBRACE          reduce using rule 33 (STATEMENT -> CONDITION .)
+    ID              reduce using rule 33 (STATEMENT -> CONDITION .)
+    IF              reduce using rule 33 (STATEMENT -> CONDITION .)
+    PRINT           reduce using rule 33 (STATEMENT -> CONDITION .)
+    RBRACE          reduce using rule 33 (STATEMENT -> CONDITION .)
+
+
+state 66
+
+    (34) STATEMENT -> WRITE .
+
+    LBRACE          reduce using rule 34 (STATEMENT -> WRITE .)
+    ID              reduce using rule 34 (STATEMENT -> WRITE .)
+    IF              reduce using rule 34 (STATEMENT -> WRITE .)
+    PRINT           reduce using rule 34 (STATEMENT -> WRITE .)
+    RBRACE          reduce using rule 34 (STATEMENT -> WRITE .)
+
+
+state 67
+
+    (41) VARS_ALT -> ID IDLIST COLON . T_INT VARLIST SEMICOLON
+    (42) VARS_ALT -> ID IDLIST COLON . T_FLOAT VARLIST SEMICOLON
+
+    T_INT           shift and go to state 75
+    T_FLOAT         shift and go to state 76
+
+
+state 68
+
+    (43) IDLIST -> COMMA ID . IDLIST
+    (43) IDLIST -> . COMMA ID IDLIST
+    (44) IDLIST -> . epsilon
+    (8) epsilon -> .
+
+    COMMA           shift and go to state 54
+    COLON           reduce using rule 8 (epsilon -> .)
+
+    IDLIST                         shift and go to state 77
+    epsilon                        shift and go to state 55
+
+state 69
+
+    (27) CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK .
+    (28) CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK . ELSE BLOCK
+
+    $end            reduce using rule 27 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK .)
+    LBRACE          reduce using rule 27 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK .)
+    ID              reduce using rule 27 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK .)
+    IF              reduce using rule 27 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK .)
+    PRINT           reduce using rule 27 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK .)
+    RBRACE          reduce using rule 27 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK .)
+    ELSE            shift and go to state 78
+
+
+state 70
+
+    (29) BLOCK -> LBRACE . BLOCK_ALT RBRACE
+    (30) BLOCK_ALT -> . STATEMENT BLOCK_ALT
+    (31) BLOCK_ALT -> . epsilon
+    (32) STATEMENT -> . VAR_ASSIGN
+    (33) STATEMENT -> . CONDITION
+    (34) STATEMENT -> . WRITE
+    (8) epsilon -> .
+    (25) VAR_ASSIGN -> . ID ASSIGN EXPRESSION SEMICOLON
+    (26) VAR_ASSIGN -> . ID ASSIGN ID SEMICOLON
+    (27) CONDITION -> . IF LPAR EXPRESSION_REL RPAR BLOCK
+    (28) CONDITION -> . IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK
+    (35) WRITE -> . PRINT LPAR WRITE_ALT RPAR SEMICOLON
+
+    RBRACE          reduce using rule 8 (epsilon -> .)
+    ID              shift and go to state 61
+    IF              shift and go to state 12
+    PRINT           shift and go to state 14
+
+    BLOCK_ALT                      shift and go to state 79
+    STATEMENT                      shift and go to state 80
+    epsilon                        shift and go to state 81
+    VAR_ASSIGN                     shift and go to state 64
+    CONDITION                      shift and go to state 65
+    WRITE                          shift and go to state 66
+
+state 71
+
+    (35) WRITE -> PRINT LPAR WRITE_ALT RPAR SEMICOLON .
+
+    $end            reduce using rule 35 (WRITE -> PRINT LPAR WRITE_ALT RPAR SEMICOLON .)
+    LBRACE          reduce using rule 35 (WRITE -> PRINT LPAR WRITE_ALT RPAR SEMICOLON .)
+    ID              reduce using rule 35 (WRITE -> PRINT LPAR WRITE_ALT RPAR SEMICOLON .)
+    IF              reduce using rule 35 (WRITE -> PRINT LPAR WRITE_ALT RPAR SEMICOLON .)
+    PRINT           reduce using rule 35 (WRITE -> PRINT LPAR WRITE_ALT RPAR SEMICOLON .)
+    RBRACE          reduce using rule 35 (WRITE -> PRINT LPAR WRITE_ALT RPAR SEMICOLON .)
+
+
+state 72
+
+    (37) WRITE_ALT -> EXPRESSION COMMA WRITE_ALT .
+
+    RPAR            reduce using rule 37 (WRITE_ALT -> EXPRESSION COMMA WRITE_ALT .)
+
+
+state 73
+
+    (38) PROGRA -> PROGRAM ID SEMICOLON STATEMENT BLOCK .
+
+    $end            reduce using rule 38 (PROGRA -> PROGRAM ID SEMICOLON STATEMENT BLOCK .)
+
+
+state 74
+
+    (39) PROGRA -> PROGRAM ID SEMICOLON VARS BLOCK .
+
+    $end            reduce using rule 39 (PROGRA -> PROGRAM ID SEMICOLON VARS BLOCK .)
+
+
+state 75
+
+    (41) VARS_ALT -> ID IDLIST COLON T_INT . VARLIST SEMICOLON
+    (45) VARLIST -> . VARS_ALT
+    (46) VARLIST -> . epsilon
+    (41) VARS_ALT -> . ID IDLIST COLON T_INT VARLIST SEMICOLON
+    (42) VARS_ALT -> . ID IDLIST COLON T_FLOAT VARLIST SEMICOLON
+    (8) epsilon -> .
+
+    ID              shift and go to state 36
+    SEMICOLON       reduce using rule 8 (epsilon -> .)
+
+    VARLIST                        shift and go to state 82
+    VARS_ALT                       shift and go to state 83
+    epsilon                        shift and go to state 84
+
+state 76
+
+    (42) VARS_ALT -> ID IDLIST COLON T_FLOAT . VARLIST SEMICOLON
+    (45) VARLIST -> . VARS_ALT
+    (46) VARLIST -> . epsilon
+    (41) VARS_ALT -> . ID IDLIST COLON T_INT VARLIST SEMICOLON
+    (42) VARS_ALT -> . ID IDLIST COLON T_FLOAT VARLIST SEMICOLON
+    (8) epsilon -> .
+
+    ID              shift and go to state 36
+    SEMICOLON       reduce using rule 8 (epsilon -> .)
+
+    VARLIST                        shift and go to state 85
+    VARS_ALT                       shift and go to state 83
+    epsilon                        shift and go to state 84
+
+state 77
+
+    (43) IDLIST -> COMMA ID IDLIST .
+
+    COLON           reduce using rule 43 (IDLIST -> COMMA ID IDLIST .)
+
+
+state 78
+
+    (28) CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK ELSE . BLOCK
+    (29) BLOCK -> . LBRACE BLOCK_ALT RBRACE
+
+    LBRACE          shift and go to state 70
+
+    BLOCK                          shift and go to state 86
+
+state 79
+
+    (29) BLOCK -> LBRACE BLOCK_ALT . RBRACE
+
+    RBRACE          shift and go to state 87
+
+
+state 80
+
+    (30) BLOCK_ALT -> STATEMENT . BLOCK_ALT
+    (30) BLOCK_ALT -> . STATEMENT BLOCK_ALT
+    (31) BLOCK_ALT -> . epsilon
+    (32) STATEMENT -> . VAR_ASSIGN
+    (33) STATEMENT -> . CONDITION
+    (34) STATEMENT -> . WRITE
+    (8) epsilon -> .
+    (25) VAR_ASSIGN -> . ID ASSIGN EXPRESSION SEMICOLON
+    (26) VAR_ASSIGN -> . ID ASSIGN ID SEMICOLON
+    (27) CONDITION -> . IF LPAR EXPRESSION_REL RPAR BLOCK
+    (28) CONDITION -> . IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK
+    (35) WRITE -> . PRINT LPAR WRITE_ALT RPAR SEMICOLON
+
+    RBRACE          reduce using rule 8 (epsilon -> .)
+    ID              shift and go to state 61
+    IF              shift and go to state 12
+    PRINT           shift and go to state 14
+
+    STATEMENT                      shift and go to state 80
+    BLOCK_ALT                      shift and go to state 88
+    epsilon                        shift and go to state 81
+    VAR_ASSIGN                     shift and go to state 64
+    CONDITION                      shift and go to state 65
+    WRITE                          shift and go to state 66
+
+state 81
+
+    (31) BLOCK_ALT -> epsilon .
+
+    RBRACE          reduce using rule 31 (BLOCK_ALT -> epsilon .)
+
+
+state 82
+
+    (41) VARS_ALT -> ID IDLIST COLON T_INT VARLIST . SEMICOLON
+
+    SEMICOLON       shift and go to state 89
+
+
+state 83
+
+    (45) VARLIST -> VARS_ALT .
+
+    SEMICOLON       reduce using rule 45 (VARLIST -> VARS_ALT .)
+
+
+state 84
+
+    (46) VARLIST -> epsilon .
+
+    SEMICOLON       reduce using rule 46 (VARLIST -> epsilon .)
+
+
+state 85
+
+    (42) VARS_ALT -> ID IDLIST COLON T_FLOAT VARLIST . SEMICOLON
+
+    SEMICOLON       shift and go to state 90
+
+
+state 86
+
+    (28) CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK .
+
+    $end            reduce using rule 28 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK .)
+    LBRACE          reduce using rule 28 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK .)
+    ID              reduce using rule 28 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK .)
+    IF              reduce using rule 28 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK .)
+    PRINT           reduce using rule 28 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK .)
+    RBRACE          reduce using rule 28 (CONDITION -> IF LPAR EXPRESSION_REL RPAR BLOCK ELSE BLOCK .)
+
+
+state 87
+
+    (29) BLOCK -> LBRACE BLOCK_ALT RBRACE .
+
+    ELSE            reduce using rule 29 (BLOCK -> LBRACE BLOCK_ALT RBRACE .)
+    $end            reduce using rule 29 (BLOCK -> LBRACE BLOCK_ALT RBRACE .)
+    LBRACE          reduce using rule 29 (BLOCK -> LBRACE BLOCK_ALT RBRACE .)
+    ID              reduce using rule 29 (BLOCK -> LBRACE BLOCK_ALT RBRACE .)
+    IF              reduce using rule 29 (BLOCK -> LBRACE BLOCK_ALT RBRACE .)
+    PRINT           reduce using rule 29 (BLOCK -> LBRACE BLOCK_ALT RBRACE .)
+    RBRACE          reduce using rule 29 (BLOCK -> LBRACE BLOCK_ALT RBRACE .)
+
+
+state 88
+
+    (30) BLOCK_ALT -> STATEMENT BLOCK_ALT .
+
+    RBRACE          reduce using rule 30 (BLOCK_ALT -> STATEMENT BLOCK_ALT .)
+
+
+state 89
+
+    (41) VARS_ALT -> ID IDLIST COLON T_INT VARLIST SEMICOLON .
+
+    $end            reduce using rule 41 (VARS_ALT -> ID IDLIST COLON T_INT VARLIST SEMICOLON .)
+    LBRACE          reduce using rule 41 (VARS_ALT -> ID IDLIST COLON T_INT VARLIST SEMICOLON .)
+    SEMICOLON       reduce using rule 41 (VARS_ALT -> ID IDLIST COLON T_INT VARLIST SEMICOLON .)
+
+
+state 90
+
+    (42) VARS_ALT -> ID IDLIST COLON T_FLOAT VARLIST SEMICOLON .
+
+    $end            reduce using rule 42 (VARS_ALT -> ID IDLIST COLON T_FLOAT VARLIST SEMICOLON .)
+    LBRACE          reduce using rule 42 (VARS_ALT -> ID IDLIST COLON T_FLOAT VARLIST SEMICOLON .)
+    SEMICOLON       reduce using rule 42 (VARS_ALT -> ID IDLIST COLON T_FLOAT VARLIST SEMICOLON .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for SEMICOLON in state 45 resolved as shift
