@@ -1,0 +1,18 @@
+program main;
+var a,b,c:int;
+{
+  a = 10;
+  b = 11 + 7 * (2 + 6 / 2);
+  
+  if (1 > 4) {
+    print(a + b, -5, 0.6);
+  }
+  
+  if( 1 < (6 + 7 / 2)) {
+    print(-1, a);
+  }
+  
+  print(b);
+  print(c);
+  print(d);
+}
